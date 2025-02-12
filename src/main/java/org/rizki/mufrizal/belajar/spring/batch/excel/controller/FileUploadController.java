@@ -31,7 +31,7 @@ public class FileUploadController {
     @SneakyThrows
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
-        var fileLocation = "/file/" + file.getOriginalFilename();
+        var fileLocation = "file/" + file.getOriginalFilename();
         try (InputStream inputStream = file.getInputStream()) {
             Files.copy(inputStream, Paths.get(fileLocation), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
